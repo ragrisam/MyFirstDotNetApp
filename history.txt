@@ -69,44 +69,41 @@
    69  git status
    70  git config --global user.email "ragrisam@gmail.com"
    71  git config --global user.name "Roger"
-   72  dotnet run
-   73  ls
-   74  cd aspnetcoreapp/
-   75  dotnet run
-   76  cd .
-   77  ls
-   78  cd ..
-   79  ls
-   80  clear
-   81  dotnet run
-   82  cd aspnetcoreapp/
-   83  dotnot run
+   72  wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+   73  sudo dpkg -i packages-microsoft-prod.deb
+   74  sudo apt-get update;   sudo apt-get install -y apt-transport-https &&   sudo apt-get update &&   sudo apt-get install -y dotnet-sdk-6.0
+   75  cd Desktop/
+   76  mkdir MyFirstDotNetWebApp
+   77  cd MyFirstDotNetWebApp/
+   78  ls
+   79  donet --version
+   80  dotnet --version
+   81  dotnet new webapp -o aspnetcoreapp
+   82  ls
+   83  cd aspnetcoreapp/
    84  dotnet run
-   85  ls
-   86  cd..
-   87  cd ..
-   88  ls
-   89  cd /
-   90  pwd
-   91  ls
-   92  ls
-   93  dotnet run
-   94  git status
-   95  git branch
-   96  dotnet build --configuration Release
-   97  git status
-   98  git branch -M main
-   99  git status
-  100  dotnet publish -c Release -o public
-  101  git status
-  102  git pull
-  103  git pull origin main
-  104  history
-  105  git status
-  106  git branch
-  107  git pull
-  108  dotnet publish -c Release -o public
-  109  git pull
-  110  cd ..
-  111  touch main.yml.txt
-  112  history > MyFirstDotNetWebApp/history.txt
+   85  dotnet dev-certs https --trust
+   86  ls
+   87  dotnet watch run
+   88  cd..
+   89  cd ..
+   90  ls
+   91  code.
+   92  code .
+   93  dotnet new webapp
+   94  dotnet dev-certs https --trust
+   95  dotnet run
+   96  clear
+   97  git remote add origin https://github.com/ragrisam/MyFirstDotNetApp.git
+   98  git itit
+   99  git init
+  100  fit commit -m "first commit"
+  101  git commit -m "first commit"
+  102  git remote add origin https://github.com/ragrisam/MyFirstDotNetApp.git
+  103  git push origin main
+  104  git pull
+  105  code .
+  106  history
+  107  dotnet build
+  108  history
+  109  history > history.txt
