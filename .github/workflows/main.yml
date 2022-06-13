@@ -1,64 +1,32 @@
 name: Deploy DotNet Web App to Server
-
 on:
-  push:
-    branches: ["main"]
-
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout the Repo
+
+      - name: Checkout of the Code
         uses: actions/checkout@v3
 
-      - name: Install DotNet 6
-        run: wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-      
-      - name: Install SDK
-        run: |
-          sudo dpkg -i packages-microsoft-prod.deb 
-          sudo apt-get update   
-          sudo apt-get install -y apt-transport-https &&   
-          sudo apt-get update &&   
-          sudo apt-get install -y dotnet-sdk-6.0
+      - name: Install .NET Environment
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '6.0.300'
 
+      - name: Verify the .NET Installation
+        run: dotnet --version
 
-      - name: Build the Web App
+      - name: Build the Application with .NET
         run: dotnet build --configuration Release
 
-      - name: Create the Public Folder
-        run:  dotnet publish -c Release -o public
-  
-      - name: Verify the Public Folder
-        run: ls -la public
+      - name: Publish the Deployment Package in public folder
+        run: dotnet publish -c Release -o public
 
-      - name: Upload public folder as Package
+      - name: Create a Artifact using from the public folder
         uses: actions/upload-artifact@v3
         with:
-          name: public-package
-          path: public  
-
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   needs: security-component-analysis
-  #   steps:
-  #     - name: Download the public folder to deploy Job
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         name: public-package
-  #         path: public
-
-  #     - name: Copy the Public Folder to Ubuntu
-  #       uses: marcodallasanta/ssh-scp-deploy@v1.2.0
-  #       with:
-  #         local: 'public/*'
-  #         remote: '~/public/'
-  #         host: ${{secrets.HOST}}
-  #         user: ${{secrets.USER}}
-  #         key: ${{secrets.KEY}}
-  #         ssh_options: -o StrictHostKeyChecking=no
-  #         pre_upload: sudo rm -rf /var/www/html/*
-  #         #post_upload: ls -la ~/public
-  #         post_upload: sudo mv ~/public/* /var/www/html/
+          name: public-folder-to-be-deployed-to-iis
+          path: public
