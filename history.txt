@@ -1,0 +1,112 @@
+    1  sudo -su
+    2  su
+    3  sudo su
+    4  yum update
+    5  su\
+    6  sudo su
+    7  sudo apt update
+    8  sudo apt install terminator openssh-server
+    9  ping google.com
+   10  exit
+   11  pwd
+   12  ls
+   13  cd Desktop/
+   14  sudo apt intsll git
+   15  sudo apt install git
+   16  ls
+   17  git clone https://github.com/ragrisam/training6june2022.git
+   18  cd downloa
+   19  cd ..
+   20  ls
+   21  cd Downloads/
+   22  ls
+   23  chmod 400 intel-dev-server_key.pem 
+   24  ssh -i intel-dev-server_key.pem azureuser@20.246.76.1
+   25  git pull origin main
+   26  cd ..pwd
+   27  pwd
+   28  sudo apt install node.js
+   29  sudo apt install curl
+   30  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+   31  ls
+   32  cd ..
+   33  cd Desktop/
+   34  ls
+   35  cd training6june2022/
+   36  scp -i /home/rps/Downloads/intel-dev-server_key.pem index.html azureuser@20.246.76.1 /var/www/html/index.html
+   37  scp -i /home/rps/Downloads/i index.html azureuser@20.246.76.1: /var/www/html/index.html
+   38  scp -i /home/rps/Downloads/intel-dev-server_key.pem index.html azureuser@20.246.76.1 /home/azuresuer/Desktop/index.h
+   39  ls
+   40  scp -i /home/rps/Downloads/intel-dev-server_key.pem index.html azureuser@20.246.76.1 /home/azuresuer/index.html
+   41  scp -i /home/rps/Downloads/intel-dev-server_key.pem index.html azureuser@20.246.76.1 /home/azureuser/index.html
+   42  scp -i /home/rps/Downloads/intel-dev-server_key.pem index.html azureuser@20.246.76.1 /home/azureuser/
+   43  scp -i /home/rps/Downloads/intel-dev-server_key.pem index.html azureuser@20.246.76.1 /home/azureuser/index.html
+   44  pwd
+   45  ls
+   46  scp -i /home/rps/Downloads/intel-dev-server_key.pem index.html azureuser@20.246.76.1 /home/azureuser/index.html
+   47  scp -i /home/rps/Downloads/intel-dev-server_key.pem index.html azureuser@20.246.76.1: /home/azureuser/index.html
+   48  scp -i /home/rps/Downloads/intel-dev-server_key.pem index.html azureuser@20.246.76.1:/home/azureuser/index.html
+   49  git pull origin main
+   50  sudo apt node.js
+   51  nvm install 16
+   52  npm --version
+   53  node --version
+   54  npm install -g gatsby-cli
+   55  gatsby --version
+   56  npm install -g npm@8.12.1
+   57  gatsby --version
+   58  ls
+   59  cd training6june2022/
+   60  cd ..
+   61  ls
+   62  gatsby new
+   63  cd training-june9-web-app/
+   64  npm run develop
+   65  ls -la
+   66  git status
+   67  ls
+   68  ls -la
+   69  git status
+   70  git config --global user.email "ragrisam@gmail.com"
+   71  git config --global user.name "Roger"
+   72  dotnet run
+   73  ls
+   74  cd aspnetcoreapp/
+   75  dotnet run
+   76  cd .
+   77  ls
+   78  cd ..
+   79  ls
+   80  clear
+   81  dotnet run
+   82  cd aspnetcoreapp/
+   83  dotnot run
+   84  dotnet run
+   85  ls
+   86  cd..
+   87  cd ..
+   88  ls
+   89  cd /
+   90  pwd
+   91  ls
+   92  ls
+   93  dotnet run
+   94  git status
+   95  git branch
+   96  dotnet build --configuration Release
+   97  git status
+   98  git branch -M main
+   99  git status
+  100  dotnet publish -c Release -o public
+  101  git status
+  102  git pull
+  103  git pull origin main
+  104  history
+  105  git status
+  106  git branch
+  107  git pull
+  108  dotnet publish -c Release -o public
+  109  git pull
+  110  cd ..
+  111  touch main.yml.txt
+  112  history > MyFirstDotNetWebApp/history.txt
