@@ -29,7 +29,7 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Create the Public Folder
-        run:  dotnet publish - c Release -o public
+        run:  dotnet publish -c Release -o public
   
       - name: Verify the Public Folder
         run: ls -la public
