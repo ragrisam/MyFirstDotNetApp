@@ -58,27 +58,13 @@ jobs:
           name: public-folder-to-be-deployed-to-iis
           path: public
 
-      # - name: publish to artifactory
-      #   uses: advancedcsg-open/action-jfrog-cli@master
-      #   with:
-      #     url: 'https://dotnetrepo.jfrog.io/artifactory/default-generic-local/'
-      #     #credentials type: 'apikey'
-      #     #apikey: ${{ secrets.RT_APIKEY }}
-      #     credentials type: 'username'
-      #     user: ${{ secrets.RT_USER }}
-      #     password: ${{ secrets.RT_PASSWORD }}
-      #     args: u "public/*" "default-generic-local/" --recursive=true --build-name=MyFirstDotNetApp
-
       - name: publish to artifactory
         uses: advancedcsg-open/action-jfrog-cli@master
         with:
-          url: 'https://dotnetrepo.jfrog.io/artifactory/default-generic-local/'
+          url: 'https://dotnetrepo.jfrog.io/'
           #credentials type: 'apikey'
           #apikey: ${{ secrets.RT_APIKEY }}
           credentials type: 'username'
           user: ${{ secrets.RT_USER }}
           password: ${{ secrets.RT_PASSWORD }}
-          args: d "*" "default-generic-local/" --recursive=true #--build-name=MyFirstDotNetApp
-
-      - name: check files
-        run: ls -la
+          args: u "public/*" "default-generic-local/" --recursive=true --build-name=MyFirstDotNetApp
