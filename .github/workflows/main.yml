@@ -61,7 +61,7 @@ jobs:
       - name: publish to artifactory
         uses: advancedcsg-open/action-jfrog-cli@master
         with:
-          url: 'https://dotnetrepo.jfrog.io/'
+          url: 'https://dotnetrepo.jfrog.io/artifacts/'
           #credentials type: 'apikey'
           #apikey: ${{ secrets.RT_APIKEY }}
           credentials type: 'username'
