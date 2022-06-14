@@ -31,6 +31,11 @@ jobs:
           name: public-folder-to-be-deployed-to-iis
           path: public
 
+  deploy:
+    runs-on: iis-dev-server
+
+    steps:
+
       - name: copy files from from working folder to iis directory
         run: |
           iisreset /stop
