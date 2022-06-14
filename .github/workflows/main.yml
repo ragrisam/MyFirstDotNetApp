@@ -33,4 +33,7 @@ jobs:
 
       - name: copy files from from working folder to iis directory
         run: |
-          xcopy C:\actions-runner\_work\MyFirstDotNetApp\MyFirstDotNetApp\* c:\inetpub\wwwroot
+          xcopy /E C:\actions-runner\_work\MyFirstDotNetApp\MyFirstDotNetApp\public\* c:\inetpub\wwwroot
+
+      - name: restart iis
+        run: iisreset
