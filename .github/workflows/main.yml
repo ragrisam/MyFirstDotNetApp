@@ -70,6 +70,8 @@ jobs:
       #     #args: u "~/public/*" "default-generic-local/" --recursive=true --build-name=MyFirstDotNetApp
       #     args: u "~/public/*" --recursive=true #--build-name=MyFirstDotNetApp
       
+      - name: check directory
+        run: ls -la
 
       - name: push to artifactory
-        run: curl -ujbrotten@protonmail.com:AP47tR4YxSGW1CR4G9EoxXqYzAp -T "~/public/*" "https://dotnetrepo.jfrog.io/artifactory/default-generic-local/"
+        run: curl -uiisuser:AP47tR4YxSGW1CR4G9EoxXqYzAp -T "public/*" "https://dotnetrepo.jfrog.io/artifactory/default-generic-local/"
