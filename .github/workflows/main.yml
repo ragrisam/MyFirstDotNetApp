@@ -37,9 +37,10 @@ jobs:
 
       - name: download Artifact
         uses: actions/download-artifact@v3
-          with:
-            name: public-folder-to-be-deployed-to-iis
-            path: public
+        with:
+          name: public-folder-to-be-deployed-to-iis
+          path: public
+
 
       - name: Copy the Files from Work Dir to IIS Directory
         run: |
