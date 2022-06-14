@@ -31,9 +31,19 @@ jobs:
           name: public-folder-to-be-deployed-to-iis
           path: public
 
-      - name: copy files from from working folder to iis directory
-        run: |
-          xcopy /E /C /R /Y C:\actions-runner\_work\MyFirstDotNetApp\MyFirstDotNetApp\public\* c:\inetpub\wwwroot
+      # - name: copy files from from working folder to iis directory
+      #   run: |
+      #     xcopy /E /C /R /Y C:\actions-runner\_work\MyFirstDotNetApp\MyFirstDotNetApp\public\* c:\inetpub\wwwroot
 
-      - name: restart iis
-        run: iisreset
+      - name: download Artifact
+        uses: actions/download-artifact@v3
+          with:
+            name: public-folder-to-be-deployed-to-iis
+            path: public
+
+      - name: Copy the Files from Work Dir to IIS Directory
+        run: |
+          xcopy ./public/* C:/inetpub/wwwroot/
+
+      # - name: restart iis
+      #   run: iisreset
