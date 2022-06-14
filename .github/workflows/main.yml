@@ -31,32 +31,40 @@ jobs:
           name: public-folder-to-be-deployed-to-iis
           path: public
 
-  deploy:
-    runs-on: iis-dev-server
-    needs: build
-    steps:
+  # deploy:
+  #   runs-on: iis-dev-server
+  #   needs: build
+  #   steps:
 
-      - name: copy files from from working folder to iis directory
-        run: |
-          iisreset /stop
-          Copy-Item ./public/* C:/inetpub/wwwroot/ -Recurse -Force
-          iisreset /start
+  #     - name: copy files from from working folder to iis directory
+  #       run: |
+  #         iisreset /stop
+  #         Copy-Item ./public/* C:/inetpub/wwwroot/ -Recurse -Force
+  #         iisreset /start
 
 
   artifactoryUpload:
-    name: Upload Trigger
+    needs: build
+
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1.2.0
-    - name: build
-      run: ./buildmyartifact.sh
-    - name: publish to artifactory
-      uses: advancedcsg-open/action-jfrog-cli@master
-      with:
-        url: 'https://dotnetrepo.jfrog.io/artifactory/default-docker-virtual/'
-        #credentials type: 'apikey'
-        #apikey: ${{ secrets.RT_APIKEY }}
-        credentials type: 'username'
-        RT_USER: ${{ secrets.RT_USER }}
-        RT_PASSWORD: ${{ secrets.RT_PASSWORD }}
-        args: u "public/*" "/mu/repo/path/" --recursive=true --build-name=myawesomeapp
+    
+      - name: Checkout of the Code
+        uses: actions/checkout@v3
+
+      - name: Get Artifact using from the public folder
+        uses: actions/download-artifact@v3
+        with:
+          name: public-folder-to-be-deployed-to-iis
+          path: public
+
+      - name: publish to artifactory
+        uses: advancedcsg-open/action-jfrog-cli@master
+        with:
+          url: 'https://dotnetrepo.jfrog.io/artifactory/default-docker-virtual/'
+          #credentials type: 'apikey'
+          #apikey: ${{ secrets.RT_APIKEY }}
+          credentials type: 'username'
+          RT_USER: ${{ secrets.RT_USER }}
+          RT_PASSWORD: ${{ secrets.RT_PASSWORD }}
+          args: u "public/*" "/mu/repo/path/" --recursive=true --build-name=myawesomeapp
