@@ -71,7 +71,7 @@ jobs:
       #     args: u "~/public/*" --recursive=true #--build-name=MyFirstDotNetApp
       
       - name: zip the folder
-        run: zip -r public.zip .\public
+        run:  Compress-Archive .\public -DestinationPath .\public.zip
 
       - name: check directory
         run: ls -la
