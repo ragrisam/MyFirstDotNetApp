@@ -33,8 +33,6 @@ jobs:
 
       - name: copy files from from working folder to iis directory
         run: |
-          xcopy /E /C /R /Y ~\public\* c:\inetpub\wwwroot
-
-
-      - name: restart iis
-        run: iisreset
+          iisreset /stop
+          Copy-Item ./public/* C:/inetpub/wwwroot/ -Recurse -Force
+          iisreset /start
