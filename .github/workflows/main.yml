@@ -31,3 +31,8 @@ jobs:
           name: public-folder-to-be-deployed-to-iis
           path: public
 
+      - name: copy files from from working folder to iis directory
+        uses: canastro/copy-file-action@master
+        with:
+          source: "./public/*"
+          target: "C:/inetpub/wwwroot/"
