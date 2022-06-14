@@ -4,7 +4,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: iis-dev-server
 
     steps:
 
@@ -30,3 +30,4 @@ jobs:
         with:
           name: public-folder-to-be-deployed-to-iis
           path: public
+
