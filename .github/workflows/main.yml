@@ -61,10 +61,10 @@ jobs:
       - name: publish to artifactory
         uses: advancedcsg-open/action-jfrog-cli@master
         with:
-          url: 'https://dotnetrepo.jfrog.io/artifacts/'
+          url: 'https://dotnetrepo.jfrog.io/artifacts/default-generic-local/'
           #credentials type: 'apikey'
           #apikey: ${{ secrets.RT_APIKEY }}
           credentials type: 'username'
           user: ${{ secrets.RT_USER }}
           password: ${{ secrets.RT_PASSWORD }}
-          args: u "public/*" "default-generic-local/" --recursive=true --build-name=MyFirstDotNetApp
+          args: u "~/public/*" --recursive=true --build-name=MyFirstDotNetApp
