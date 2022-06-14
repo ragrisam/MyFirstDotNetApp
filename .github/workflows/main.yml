@@ -4,7 +4,7 @@ on:
 
 jobs:
   build:
-    runs-on: iis-dev-server
+    runs-on: windows latest
 
     steps:
 
