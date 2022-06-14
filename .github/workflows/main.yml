@@ -33,7 +33,7 @@ jobs:
 
   deploy:
     runs-on: iis-dev-server
-
+    needs: build
     steps:
 
       - name: copy files from from working folder to iis directory
