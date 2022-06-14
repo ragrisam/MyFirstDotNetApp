@@ -32,6 +32,5 @@ jobs:
           path: public
 
       - name: copy files from from working folder to iis directory
-        uses: canastro/copy-file-action@master
         run: |
           xcopy C:\actions-runner\_work\* c:\inetpub\wwwroot
