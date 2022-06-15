@@ -31,6 +31,19 @@ jobs:
           name: public-folder-to-be-deployed-to-iis
           path: public
 
+      - name: zip the folder
+        run:  Compress-Archive .\public -DestinationPath .\public.zip
+
+      - name: check directory
+        run: dir
+
+      - name: Create a Artifact using from the public folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: public zip file
+          path: public.zip
+        
+
   # deploy:
   #   runs-on: iis-dev-server
   #   needs: build
@@ -43,10 +56,27 @@ jobs:
   #         iisreset /start
 
 
+  # artifactoryUpload:
+  #   needs: build
+
+  #   runs-on: iis-dev-server
+  #   steps:
+    
+  #     - name: Checkout of the Code
+  #       uses: actions/checkout@v3
+
+  #     - name: Get Artifact using from the public folder
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         # name: public-folder-to-be-deployed-to-iis
+  #         # path: public
+  #         name: public zip file
+  #         path: public.zip
+
   artifactoryUpload:
     needs: build
 
-    runs-on: iis-dev-server
+    runs-on: ubuntu latest
     steps:
     
       - name: Checkout of the Code
@@ -55,8 +85,9 @@ jobs:
       - name: Get Artifact using from the public folder
         uses: actions/download-artifact@v3
         with:
-          name: public-folder-to-be-deployed-to-iis
-          path: public
+          name: public zip file
+          path: public.zip
+
 
       # - name: publish to artifactory
       #   uses: advancedcsg-open/action-jfrog-cli@master
@@ -70,13 +101,6 @@ jobs:
       #     #args: u "~/public/*" "default-generic-local/" --recursive=true --build-name=MyFirstDotNetApp
       #     args: u "~/public/*" --recursive=true #--build-name=MyFirstDotNetApp
       
-      - name: zip the folder
-        run:  Compress-Archive .\public -DestinationPath .\public.zip
-
-      - name: check directory
-        run: dir
-
-
 
       - name: push to artifactory
         run: curl -uiisuser:AP47tR4YxSGW1CR4G9EoxXqYzAp "public.zip" "https://dotnetrepo.jfrog.io/artifactory/default-generic-local/"
