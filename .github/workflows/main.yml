@@ -103,4 +103,4 @@ jobs:
       
 
       - name: push to artifactory
-        run: curl -ujbrotten@protonmail.com:AP47tR4YxSGW1CR4G9EoxXqYzAp -T "public.zip" "https://dotnetrepo.jfrog.io/artifactory/default-generic-local/public.zip"
+        run: curl -uiisrunner:AP4SqrHG18g1eGsrU2im4oUi2Mh -T "public.zip" "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public.zip"
