@@ -44,34 +44,17 @@ jobs:
           path: public.zip
         
 
-  # deploy:
-  #   runs-on: iis-dev-server
-  #   needs: build
-  #   steps:
+  deploy:
+    runs-on: iis-dev-server
+    needs: build
+    steps:
 
-  #     - name: copy files from from working folder to iis directory
-  #       run: |
-  #         iisreset /stop
-  #         Copy-Item ./public/* C:/inetpub/wwwroot/ -Recurse -Force
-  #         iisreset /start
+      - name: copy files from from working folder to iis directory
+        run: |
+          iisreset /stop
+          Copy-Item ./public/* C:/inetpub/wwwroot/ -Recurse -Force
+          iisreset /start
 
-
-  # artifactoryUpload:
-  #   needs: build
-
-  #   runs-on: iis-dev-server
-  #   steps:
-    
-  #     - name: Checkout of the Code
-  #       uses: actions/checkout@v3
-
-  #     - name: Get Artifact using from the public folder
-  #       uses: actions/download-artifact@v3
-  #       with:
-  #         # name: public-folder-to-be-deployed-to-iis
-  #         # path: public
-  #         name: public zip file
-  #         path: public.zip
 
   artifactoryUpload:
     needs: build
@@ -87,20 +70,6 @@ jobs:
         with:
           name: public zip file
           path: public.zip
-
-  
-      # - name: publish to artifactory
-      #   uses: advancedcsg-open/action-jfrog-cli@master
-      #   with:
-      #     url: 'https://dotnetrepo.jfrog.io/artifactory/default-generic-local/'
-      #     #credentials type: 'apikey'
-      #     #apikey: ${{ secrets.RT_APIKEY }}
-      #     credentials type: 'username'
-      #     user: ${{ secrets.RT_USER }}
-      #     password: ${{ secrets.RT_PASSWORD }}
-      #     #args: u "~/public/*" "default-generic-local/" --recursive=true --build-name=MyFirstDotNetApp
-      #     args: u "~/public/*" --recursive=true #--build-name=MyFirstDotNetApp
-      
 
       - name: push to artifactory
         run: curl -uiisrunner:AP4SqrHG18g1eGsrU2im4oUi2Mh -T "public.zip" "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public.zip"
