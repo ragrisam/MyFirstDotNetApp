@@ -76,7 +76,7 @@ jobs:
   artifactoryUpload:
     needs: build
 
-    runs-on: ubuntu latest
+    runs-on: iis-dev-server
     steps:
     
       - name: Checkout of the Code
