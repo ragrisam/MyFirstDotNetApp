@@ -76,15 +76,15 @@ jobs:
         run: curl -uiisrunner:AP4SqrHG18g1eGsrU2im4oUi2Mh -T "public.zip" "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip"
        
 
- deploy:
-    runs-on: iis-server-aspd
-    needs: build
-    steps:
+  deploy:
+      runs-on: iis-server-aspd
+      needs: build
+      steps:
 
-      - name: Jfrog Checking
-        uses: jfrog/setup-jfrog-cli@v2
-        with:
-          version: latest
+        - name: Jfrog Checking
+          uses: jfrog/setup-jfrog-cli@v2
+          with:
+            version: latest
 
-      - name: Download the Code
-        run: Invoke-WebRequest -Uri hhttps://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip -OutFile public.zip
+        - name: Download the Code
+          run: Invoke-WebRequest -Uri hhttps://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip -OutFile public.zip
