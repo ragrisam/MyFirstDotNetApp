@@ -76,7 +76,7 @@ jobs:
   artifactoryUpload:
     needs: build
 
-    runs-on: iis-dev-server
+    runs-on: ubuntu-latest
     steps:
     
       - name: Checkout of the Code
@@ -88,13 +88,7 @@ jobs:
           name: public zip file
           path: public.zip
 
-      - name: post the zip file
-        run: |
-          $Username = "iisrunner"
-          $Password =  "StupidPass4$" | ConvertTo-SecureString -AsPlainText -Force
-          $Credentials = New-Object System.Management.Automation.PSCredential $Username,$Password
-          Invoke-RestMethod -Method POST -Uri 'https://dotnetrepo.jfrog.io/artifactory/default-generic-local/' -Credential $Credentials -infile C:\actions-runner\_work\MyFirstDotNetApp\MyFirstDotNetApp\public.zip\public.zip
-
+  
       # - name: publish to artifactory
       #   uses: advancedcsg-open/action-jfrog-cli@master
       #   with:
@@ -108,5 +102,5 @@ jobs:
       #     args: u "~/public/*" --recursive=true #--build-name=MyFirstDotNetApp
       
 
-      # - name: push to artifactory
-      #   run: curl -uiisuser:AP47tR4YxSGW1CR4G9EoxXqYzAp "public.zip" "https://dotnetrepo.jfrog.io/artifactory/default-generic-local/"
+      - name: push to artifactory
+        run: curl -uiisuser:AP47tR4YxSGW1CR4G9EoxXqYzAp "public.zip" "https://dotnetrepo.jfrog.io/artifactory/default-generic-local/"
