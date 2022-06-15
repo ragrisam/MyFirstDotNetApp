@@ -86,5 +86,14 @@ jobs:
           with:
             version: latest
 
-        - name: Download the Code
-          run: Invoke-WebRequest -Uri https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip -OutFile public.zip
+        # - name: Download the Code
+        #   run: Invoke-WebRequest -Uri https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip -OutFile public.zip
+
+        - name: download the zip
+          run: 
+          $user = {{ secrets.RT_USER }}
+          $pass = {{ secrets.RT_PASSWORD }}
+          $pair = "$($user):$($pass)"
+          $encodedCredentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($Pair))
+          $headers = @{ Authorization = "Basic $encodedCredentials" }
+          Invoke-WebRequest -Uri https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip -Method Get -Headers $headers -OutFile public.zip
