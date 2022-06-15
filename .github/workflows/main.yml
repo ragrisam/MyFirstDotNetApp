@@ -87,5 +87,5 @@ jobs:
             version: latest
 
         - name: Download the Code
-          run: curl -H ${{ secrets.JFROGKEY }} -O "https://nishanthinteldemo.jfrog.io/artifactory/aspdotnet-generic-local/public-$GITHUB_RUN_NUMBER.zip"
+          run: curl -H ${{ secrets.JFROGKEY }} -O "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip"
 
