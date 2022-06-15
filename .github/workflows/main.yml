@@ -59,8 +59,8 @@ jobs:
   artifactoryUpload:
     needs: build
 
-  #  runs-on: ubuntu-latest
-    runs-on: iis-dev-server
+    runs-on: ubuntu-latest
+
     steps:
     
       - name: Checkout of the Code
@@ -73,5 +73,5 @@ jobs:
           path: public.zip
 
       - name: push to artifactory
-       # run: curl -uiisrunner:AP4SqrHG18g1eGsrU2im4oUi2Mh -T "public.zip" "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public.zip"
-        run: curl --user iisrunner:AP4SqrHG18g1eGsrU2im4oUi2Mh --upload-file "public.zip" "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public.zip"
+        run: curl -uiisrunner:AP4SqrHG18g1eGsrU2im4oUi2Mh -T "public.zip" "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip.zip"
+       
