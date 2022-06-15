@@ -90,8 +90,8 @@ jobs:
 
       - name: post the zip file
         run: |
-          $username = "iisuser"
-          $password = ${{ secrets.RT_PASSWORD }}
+          $username = ${{ secrets.RT_USER }}
+          $password =  "Secret123$'
           $Credentials = New-Object System.Management.Automation.PSCredential $Username,$Password
           Invoke-RestMethod -Method 'Post' -Uri 'https://dotnetrepo.jfrog.io/artifactory/default-generic-local/' -Credential $Credentials -OutFile public.zip
 
