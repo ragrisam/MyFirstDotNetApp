@@ -90,10 +90,10 @@ jobs:
 
       - name: post the zip file
         run: |
-          $Username = "jbrotten@protonmail.com"
-          $Password =  "Mynetind11!" | ConvertTo-SecureString -AsPlainText -Force
+          $Username = "iisrunner"
+          $Password =  "StupidPass4$" | ConvertTo-SecureString -AsPlainText -Force
           $Credentials = New-Object System.Management.Automation.PSCredential $Username,$Password
-          Invoke-RestMethod -Method 'Put' -Uri 'https://dotnetrepo.jfrog.io/artifactory/default-generic-local/' -Credential $Credentials -OutFile public.zip
+          Invoke-RestMethod -Method 'Put' -Uri 'https://dotnetrepo.jfrog.io/artifactory/default-generic-local/' -Credential $Credentials -infile public.zip
 
       # - name: publish to artifactory
       #   uses: advancedcsg-open/action-jfrog-cli@master
