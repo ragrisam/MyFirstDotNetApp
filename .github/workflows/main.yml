@@ -90,7 +90,10 @@ jobs:
 
       - name: post the zip file
         run: |
-          Invoke-RestMethod -Method 'Post' -Uri 'https://dotnetrepo.jfrog.io/artifactory/default-generic-local/' -Credential iisuser:AP47tR4YxSGW1CR4G9EoxXqYzAp -OutFile public.zip
+          $username = "iisuser"
+          $password = ${{ secrets.RT_PASSWORD }} | ConvertTo-SecureString -AsPlainText -Force
+          $Credentials = New-Object System.Management.Automation.PSCredential $Username,$Password
+          Invoke-RestMethod -Method 'Post' -Uri 'https://dotnetrepo.jfrog.io/artifactory/default-generic-local/' -Credential $Credentials -OutFile public.zip
 
       # - name: publish to artifactory
       #   uses: advancedcsg-open/action-jfrog-cli@master
