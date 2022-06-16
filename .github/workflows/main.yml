@@ -85,7 +85,7 @@ jobs:
     steps:
 
       - name: Run JFrog CLI
-        run: jf rt dl dotnetapp/public-latest.zip public.zip
+        run: jf rt dl dotnetapp/public-latest.zip public.zip --url=https://dotnetrepo.jfrog.io/artifactory
 
       - name: Unzip the File
         run: |
