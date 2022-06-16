@@ -81,7 +81,7 @@ jobs:
 
   deploy:
     runs-on: iis-dev-server
-    needs: build
+    needs: artifactoryUpload
     steps:
 
       - name: Run JFrog CLI
