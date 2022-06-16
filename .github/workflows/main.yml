@@ -80,7 +80,7 @@ jobs:
 
 
   deploy:
-    runs-on: iis-server-aspd
+    runs-on: iis-dev-server
     needs: build
     steps:
 
