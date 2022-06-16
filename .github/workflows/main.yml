@@ -73,8 +73,9 @@ jobs:
           path: public.zip
 
       - name: push to artifactory
-        run: curl -uiisrunner:AP4SqrHG18g1eGsrU2im4oUi2Mh -T "public.zip" "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip"
-        run: curl -uiisrunner:AP4SqrHG18g1eGsrU2im4oUi2Mh -T "public.zip" "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-latest.zip"
+        run: |
+          curl -uiisrunner:AP4SqrHG18g1eGsrU2im4oUi2Mh -T "public.zip" "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip"
+          curl -uiisrunner:AP4SqrHG18g1eGsrU2im4oUi2Mh -T "public.zip" "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-latest.zip"
        
 
 
