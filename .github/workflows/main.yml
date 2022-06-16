@@ -85,10 +85,11 @@ jobs:
     steps:
 
       - name: Run JFrog CLI
-        run: jf rt dl dotnetapp/public-latest.zip public.zip --url=https://dotnetrepo.jfrog.io/artifactory --user=iisrunner --password=Mynetind11!
+        run: jf rt dl dotnetapp/public-latest.zip public.zip --url=https://dotnetrepo.jfrog.io/artifactory --user=iisrunner --password= {{secrets.RT_PASSWORD}}
 
       - name: Unzip the File
         run: |
+          dir
           Expand-Archive .\public.zip . -Force
 
       - name: Copy the Files from Work Dir to IIS Directory
