@@ -86,7 +86,7 @@ jobs:
 
       - name: Run JFrog CLI
         run: |
-          jf rt dl dotnetapp-generic-local/public-latest.zip public.zip
+          jf rt dl dotnetapp/public-latest.zip public.zip
       - name: Unzip the File
         run: |
           Expand-Archive .\public.zip . -Force
