@@ -47,8 +47,8 @@ jobs:
       - name: Upload to Artifact
         run: |
 
-          curl -H "X-JFrog-Art-Api:cmVmdGtuOjAxOjE2ODcyMDIzNTE6TEJXVHd0TW83WVNKZEhEaFN1bktjdkM2bjRG" -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-latest.zip"
-          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip"
+          curl -H "X-JFrog-Art-Api:AKCp8mZHoA2ccfvC64FjPLQAVwEi5GEHp7xQR1cC7smgkH4ygd83NeJcpowmwoVLLd8Yhea81" -T public.zip "https://dotnetrepo.jfrog.io/artifactory/jfrepo/public-latest.zip"
+#          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip"
 
 
   deploy:
