@@ -48,6 +48,7 @@ jobs:
         run: |
           curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip"
           curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-latest.zip"
+          
 
   deploy:
     runs-on: iis-dev-server
@@ -56,7 +57,7 @@ jobs:
 
       - name: Run JFrog CLI
         run: |
-          jf rt dl aspdotnet/public-latest.zip public.zip
+          jf rt dl aspdotnet/public-latest.zip public.zip --url=https://dotnetrepo.jfrog.io/artifactory
 
       - name: Unzip the File
         run: |
