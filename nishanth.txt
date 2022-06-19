@@ -46,17 +46,17 @@ jobs:
 
       - name: Upload to Artifact
         run: |
-          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip"
-          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-latest.zip"
+          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://nishanthinteldemo.jfrog.io/artifactory/aspdotnet-generic-local/public-$GITHUB_RUN_NUMBER.zip"
+          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://nishanthinteldemo.jfrog.io/artifactory/aspdotnet-generic-local/public-latest.zip"
 
   deploy:
-    runs-on: iis-dev-server
+    runs-on: iis-server-aspd
     needs: build
     steps:
 
       - name: Run JFrog CLI
         run: |
-          jf rt dl aspdotnet/public-latest.zip public.zip
+          jf rt dl aspdotnet-generic-local/public-latest.zip public.zip
 
       - name: Unzip the File
         run: |
