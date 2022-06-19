@@ -46,7 +46,7 @@ jobs:
 
       - name: Upload to Artifact
         run: |
-        # curl -H ${{ secrets.JFROGKEY }} -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip"
+#         curl -H ${{ secrets.JFROGKEY }} -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip"
           curl -H ${{ secrets.JFROGKEY }} -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-latest.zip"
           
 
