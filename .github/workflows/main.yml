@@ -44,6 +44,7 @@ jobs:
       - name: Check Weather Zip Folder is created or not
         run: ls -l public.zip
 
+        
       - name: Upload to Artifact
         run: |
 #          curl -H ${{ secrets.JFROGKEY }} -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip"
