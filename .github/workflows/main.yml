@@ -46,8 +46,8 @@ jobs:
 
       - name: Upload to Artifact
         run: |
-          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip"
-          curl -H "X-JFrog-Art-Api:${{ secrets.JFROGKEY }}" -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-latest.zip"
+          curl -H ${{ secrets.JFROGKEY }} -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-$GITHUB_RUN_NUMBER.zip"
+          curl -H ${{ secrets.JFROGKEY }} -T public.zip "https://dotnetrepo.jfrog.io/artifactory/dotnetapp/public-latest.zip"
           
 
   deploy:
@@ -56,9 +56,8 @@ jobs:
     steps:
 
       - name: Run JFrog CLI
-        run: |
-          jf rt dl aspdotnet/public-latest.zip public.zip --url=https://dotnetrepo.jfrog.io/artifactory
-
+        run: jf rt dl dotnetapp/public-latest.zip public.zip --url=https://dotnetrepo.jfrog.io/artifactory --user=iisrunner --password=${{secrets.RT_PASSWORD}}
+        
       - name: Unzip the File
         run: |
           Expand-Archive .\public.zip . -Force
